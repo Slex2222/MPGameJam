@@ -10,7 +10,7 @@ emission_energy_multiplier = 0.31
 uv1_triplanar = true
 uv1_triplanar_sharpness = 4.141059
 
-[node name="TestLevel" type="Node2D"]
+[node name="TestLevel" type="Node3D"]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.90964, 2.2610426, -33.01818)
