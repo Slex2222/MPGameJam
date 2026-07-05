@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmfbl1g03ilos"]
+[gd_scene load_steps=7 format=3 uid="uid://cmfbl1g03ilos"]
 
 [ext_resource type="Script" uid="uid://dxt3lpiix64qq" path="res://Instances/Player/Scripts/PlayerMovement.gd" id="1_q6qer"]
 [ext_resource type="Texture2D" uid="uid://cyjpbo1enr6du" path="res://Instances/Player/Assets/IconCloak.png" id="2_3wvm3"]
+[ext_resource type="PackedScene" uid="uid://duf0pw3bdx0f1" path="res://Instances/FlashLight/flashlight.tscn" id="2_duirr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q6qer"]
 
@@ -27,12 +28,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03161621, 0)
 shape = SubResource("CapsuleShape3D_3wvm3")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70397615, -0.065555096)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
+[node name="Flashlight" parent="Camera3D" instance=ExtResource("2_duirr")]
+transform = Transform3D(-0.4969488, 0, -0.055153433, 0, 0.5, 0, 0.055153433, 0, -0.4969488, 0.57089365, -0.4856553, -0.63550335)
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
 size = Vector2i(1920, 1080)
-size_2d_override = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="PlayerStateUI" type="Control" parent="SubViewport"]

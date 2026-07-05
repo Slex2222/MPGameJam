@@ -1,19 +1,27 @@
 extends CharacterBody3D
 
-@export var Speed: int = 10
-@export var JumpSpeed: int = 8
+@export_group("Character Speed")
+@export var CrouchSpeed: int = 5
+@export var WalkSpeed: int = 10
+@export var RunSpeed: int = 15
+#@export var JumpSpeed: int = 8
+
+var Speed: int = WalkSpeed
 
 enum PlayerStates {
 	Idle,
 	Walking,
 	Jumping,
+	Crouch,
+	Sprinting
 }
+
+var FlashLightOn: bool = false
 
 var PlayerState: PlayerStates = PlayerStates.Idle
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	ShowUI()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -31,9 +39,29 @@ func _physics_process(delta: float) -> void:
 	
 	Walk()
 	
-	if Input.is_action_just_pressed("Jump") and is_on_floor():
-		Jump()
-
+	if Input.is_action_just_pressed("Crouch"):
+		if PlayerState != PlayerStates.Crouch:
+			StartCrouch()
+		else:
+			StopCrouch()
+	
+	if Input.is_action_just_pressed("Sprint") and PlayerState != PlayerStates.Sprinting:
+		StartSprinting()
+	
+	if Input.is_action_just_released("Sprint") and PlayerState == PlayerStates.Sprinting:
+		StopSprinting()
+	
+	if Input.is_action_just_pressed("TurnOnFlashLight"):
+		if FlashLightOn:
+			TurnOffFlashLight()
+		else:
+			TurnOnFlashLight()
+	#if Input.is_action_just_pressed("Jump") and is_on_floor():
+		#Jump()
+	 
+	#elif Input.is_action_just_released("Jump") and velocity.y > 0.0:
+		#JumpStop()
+	
 	move_and_slide()
 
 func Walk():
@@ -49,21 +77,43 @@ func Walk():
 	
 	velocity.x = InputDirection3D.x * Speed
 	velocity.z = InputDirection3D.z * Speed
+
+func StartCrouch():
+	Speed = CrouchSpeed
 	
-	if Input.is_action_just_pressed("Jump") and is_on_floor():
-		Jump()
-	 
-	elif Input.is_action_just_released("Jump") and velocity.y > 0.0:
-		JumpStop()
+	var tween = create_tween()
+	tween.parallel().tween_property($Camera3D, "position:y", 0.25, 0.15)
+	
+	PlayerState = PlayerStates.Crouch
 
-func Jump():
-	velocity.y += JumpSpeed
+func StopCrouch():
+	Speed = WalkSpeed
+	
+	var tween = create_tween()
+	tween.parallel().tween_property($Camera3D, "position:y", 0.7, 0.15)
+	
+	PlayerState = PlayerStates.Idle
 
-func JumpStop():
-	velocity.y = 0.0
+func StartSprinting():
+	PlayerState = PlayerStates.Sprinting
+	
+	Speed = RunSpeed
 
-func ShowUI():
-	var mat = StandardMaterial3D.new()
-	mat.albedo_texture = $SubViewport.get_texture()
-	mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	$"Display UI".material_override = mat
+func StopSprinting():
+	PlayerState = PlayerStates.Idle
+	
+	Speed = WalkSpeed
+
+func TurnOnFlashLight():
+	$Camera3D/Flashlight/SpotLight3D.visible = true
+	FlashLightOn = true
+
+func TurnOffFlashLight():
+	$Camera3D/Flashlight/SpotLight3D.visible = false
+	FlashLightOn = false
+
+#func Jump():
+	#velocity.y += JumpSpeed
+
+#func JumpStop():
+	#velocity.y = 0.0

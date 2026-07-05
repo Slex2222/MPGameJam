@@ -1,16 +1,16 @@
-[gd_scene load_steps=0 format=3 uid="uid://mahtby0h8lo2"]
+[gd_scene load_steps=4 format=3 uid="uid://dtac1evnlsevx"]
 
 [ext_resource type="PackedScene" uid="uid://dbhixfj4bm4jd" path="res://Assets/Books.glb" id="1_noarx"]
 [ext_resource type="PackedScene" uid="uid://djjvxxlfqa4xi" path="res://Assets/atm.glb" id="2_a0tk4"]
-[ext_resource type="PackedScene" uid="uid://bg7c4acvbqomq" path="res://Assets/Flashlight.glb" id="3_a0tk4"]
+[ext_resource type="PackedScene" uid="uid://bg7c4acvbqomq" path="res://Instances/FlashLight/Assets/Flashlight.glb" id="3_a0tk4"]
 
-[node name="Node3D" type="Node3D" unique_id=806985031]
+[node name="Node3D" type="Node3D"]
 
-[node name="Books" parent="." unique_id=1323142343 instance=ExtResource("1_noarx")]
+[node name="Books" parent="." instance=ExtResource("1_noarx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7431909, 0, 1.2281367)
 
-[node name="atm" parent="." unique_id=1577967148 instance=ExtResource("2_a0tk4")]
+[node name="atm" parent="." instance=ExtResource("2_a0tk4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06352019, 0, -1.807806)
 
-[node name="Flashlight" parent="." unique_id=1175201015 instance=ExtResource("3_a0tk4")]
+[node name="Flashlight" parent="." instance=ExtResource("3_a0tk4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44223452, 0, 2.7234282)
