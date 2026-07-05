@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://mahtby0h8lo2"]
+[gd_scene load_steps=0 format=3 uid="uid://mahtby0h8lo2"]
 
 [ext_resource type="PackedScene" uid="uid://dbhixfj4bm4jd" path="res://Assets/Books.glb" id="1_noarx"]
 [ext_resource type="PackedScene" uid="uid://djjvxxlfqa4xi" path="res://Assets/atm.glb" id="2_a0tk4"]

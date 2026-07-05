@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4482tpujmtpy"]
+
+[ext_resource type="Script" path="res://Instances/SecurityGuard/Scripts/Movement.gd" id="1_jklwq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v6xxa"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jklwq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8wwjh"]
+
+[node name="SecurityGuard" type="CharacterBody3D"]
+script = ExtResource("1_jklwq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_v6xxa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_jklwq")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="HurtBox" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
+shape = SubResource("CapsuleShape3D_8wwjh")
