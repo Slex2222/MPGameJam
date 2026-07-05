@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmfbl1g03ilos"]
+[gd_scene load_steps=6 format=3 uid="uid://cmfbl1g03ilos"]
 
 [ext_resource type="Script" uid="uid://dxt3lpiix64qq" path="res://Instances/Player/Scripts/PlayerMovement.gd" id="1_q6qer"]
 [ext_resource type="Texture2D" uid="uid://cyjpbo1enr6du" path="res://Instances/Player/Assets/IconCloak.png" id="2_3wvm3"]
@@ -11,20 +11,18 @@
 radius = 0.38134766
 height = 1.6496582
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_3wvm3"]
-
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_q6qer")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_q6qer")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_3wvm3")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="HurtBox" type="Area3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03161621, 0)
 shape = SubResource("CapsuleShape3D_3wvm3")
 
@@ -68,7 +66,3 @@ offset_bottom = 64.0
 grow_horizontal = 0
 texture = ExtResource("2_3wvm3")
 expand_mode = 1
-
-[node name="Display UI" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.5489619, 0, 0, 0, -3.2279925e-07, -2.3695822, 0, 7.384785, -1.03577726e-07, 0, 0, -2.7916367)
-mesh = SubResource("PlaneMesh_3wvm3")
