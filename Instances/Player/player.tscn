@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmfbl1g03ilos"]
+[gd_scene load_steps=6 format=3 uid="uid://cmfbl1g03ilos"]
 
 [ext_resource type="Script" uid="uid://dxt3lpiix64qq" path="res://Instances/Player/Scripts/PlayerMovement.gd" id="1_q6qer"]
+[ext_resource type="Texture2D" uid="uid://cyjpbo1enr6du" path="res://Instances/Player/Assets/IconCloak.png" id="2_3wvm3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q6qer"]
 
@@ -13,17 +14,55 @@ height = 1.6496582
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_q6qer")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_q6qer")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_3wvm3")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="HurtBox" type="Area3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03161621, 0)
 shape = SubResource("CapsuleShape3D_3wvm3")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70397615, -0.065555096)
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1920, 1080)
+size_2d_override = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="PlayerStateUI" type="Control" parent="SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="SubViewport/PlayerStateUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.97
+anchor_top = 0.05
+anchor_right = 0.97
+anchor_bottom = 0.05
+offset_left = -88.0
+offset_bottom = 88.0
+grow_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="SubViewport/PlayerStateUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.95
+anchor_top = 0.07
+anchor_right = 0.95
+anchor_bottom = 0.07
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+texture = ExtResource("2_3wvm3")
+expand_mode = 1

@@ -13,6 +13,7 @@ var PlayerState: PlayerStates = PlayerStates.Idle
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	ShowUI()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -60,3 +61,9 @@ func Jump():
 
 func JumpStop():
 	velocity.y = 0.0
+
+func ShowUI():
+	var mat = StandardMaterial3D.new()
+	mat.albedo_texture = $SubViewport.get_texture()
+	mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	$"Display UI".material_override = mat

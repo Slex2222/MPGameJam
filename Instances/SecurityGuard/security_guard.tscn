@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4482tpujmtpy"]
+[gd_scene load_steps=5 format=3 uid="uid://c1e2q82uh3rqm"]
 
-[ext_resource type="Script" path="res://Instances/SecurityGuard/Scripts/Movement.gd" id="1_jklwq"]
+[ext_resource type="Script" uid="uid://bk4eqyhe4ige6" path="res://Instances/SecurityGuard/Scripts/Movement.gd" id="1_jklwq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v6xxa"]
 
