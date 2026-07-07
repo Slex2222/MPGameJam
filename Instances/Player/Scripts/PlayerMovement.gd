@@ -24,12 +24,6 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
-		rotation_degrees.y -= event.relative.x * 0.25
-		$Camera3D.rotation_degrees.x -= event.relative.y * 0.25
-		$Camera3D.rotation_degrees.x = clamp(
-			$Camera3D.rotation_degrees.x, -80.0, 80.0
-		)
 	if event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
@@ -63,6 +57,8 @@ func _physics_process(delta: float) -> void:
 		#JumpStop()
 	
 	move_and_slide()
+	
+	ApplyVelocityToRigidBodies()
 
 func Walk():
 	var InputDirection2D = Input.get_vector(
@@ -82,7 +78,9 @@ func StartCrouch():
 	Speed = CrouchSpeed
 	
 	var tween = create_tween()
-	tween.parallel().tween_property($Camera3D, "position:y", 0.25, 0.15)
+	for child in get_children():
+		if child.is_in_group("CanScale"):
+			tween.parallel().tween_property(child, "scale:y", 0.6, 0.15)
 	
 	PlayerState = PlayerStates.Crouch
 
@@ -90,7 +88,9 @@ func StopCrouch():
 	Speed = WalkSpeed
 	
 	var tween = create_tween()
-	tween.parallel().tween_property($Camera3D, "position:y", 0.7, 0.15)
+	for child in get_children():
+		if child.is_in_group("CanScale"):
+			tween.parallel().tween_property(child, "scale:y", 1.0, 0.15)
 	
 	PlayerState = PlayerStates.Idle
 
@@ -105,13 +105,21 @@ func StopSprinting():
 	Speed = WalkSpeed
 
 func TurnOnFlashLight():
-	$Camera3D/Flashlight/SpotLight3D.visible = true
+	$Flashlight/SpotLight3D.visible = true
 	FlashLightOn = true
 
 func TurnOffFlashLight():
-	$Camera3D/Flashlight/SpotLight3D.visible = false
+	$Flashlight/SpotLight3D.visible = false
 	FlashLightOn = false
 
+
+func ApplyVelocityToRigidBodies():
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		if collision.get_collider() is RigidBody3D:
+			# Push the object in the direction the player is moving
+			var push_direction = -collision.get_normal()
+			collision.get_collider().apply_central_force(push_direction * 1.0)
 #func Jump():
 	#velocity.y += JumpSpeed
 

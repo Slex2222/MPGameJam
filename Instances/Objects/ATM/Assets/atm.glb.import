@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://djjvxxlfqa4xi"
-path="res://.godot/imported/atm.glb-95affa660e0c0f35b6f4d9bb3451ec7f.scn"
+path="res://.godot/imported/atm.glb-7daf8017c6a2352c97523a916de2c988.scn"
 
 [deps]
 
-source_file="res://Assets/atm.glb"
-dest_files=["res://.godot/imported/atm.glb-95affa660e0c0f35b6f4d9bb3451ec7f.scn"]
+source_file="res://Instances/Objects/ATM/Assets/atm.glb"
+dest_files=["res://.godot/imported/atm.glb-7daf8017c6a2352c97523a916de2c988.scn"]
 
 [params]
 

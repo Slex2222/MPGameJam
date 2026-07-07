@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cemdhb6n2ans"]
+[gd_scene load_steps=7 format=3 uid="uid://cemdhb6n2ans"]
 
 [ext_resource type="Texture2D" uid="uid://6l1wcijjmenw" path="res://Assets/checkboard.png" id="1_00vsl"]
 [ext_resource type="PackedScene" uid="uid://cmfbl1g03ilos" path="res://Instances/Player/player.tscn" id="1_ormqy"]
+[ext_resource type="PackedScene" uid="uid://cfk5ai5mxgb7y" path="res://Instances/ObjectTest/test_object.tscn" id="3_4k50d"]
+[ext_resource type="PackedScene" uid="uid://6bhej0wxoe37" path="res://Instances/Objects/ATM/atm.tscn" id="4_i4ak4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gbj0n"]
 albedo_color = Color(0.41075924, 0.8559836, 1.92523e-06, 1)
@@ -11,6 +13,9 @@ emission = Color(0, 0.45939606, 0.35504663, 1)
 emission_energy_multiplier = 0.31
 uv1_triplanar = true
 uv1_triplanar_sharpness = 4.141059
+
+[sub_resource type="Environment" id="Environment_i4ak4"]
+ambient_light_color = Color(0.7058824, 0.7647059, 0.8627451, 1)
 
 [node name="TestLevel" type="Node3D"]
 
@@ -24,4 +29,16 @@ material = SubResource("StandardMaterial3D_gbj0n")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.711452, 3.6004868, 11.069176)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.07913766, 0.9968637, 0, -0.9968637, -0.07913767, 0, 34.2184, -28.892347)
+transform = Transform3D(1, 0, 0, 0, -0.07913766, 0.9968637, 0, -0.9968637, -0.07913766, 0, 34.2184, -28.831388)
+
+[node name="TestObject" parent="." instance=ExtResource("3_4k50d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.796106, 8.969231, -1.0792732)
+mass = 0.001
+linear_damp_mode = 1
+linear_damp = 3.0
+
+[node name="ATM" parent="." instance=ExtResource("4_i4ak4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 3.7817826, 8.660513)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_i4ak4")
