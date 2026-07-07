@@ -8,6 +8,11 @@ extends CharacterBody3D
 
 var Speed: int = WalkSpeed
 
+var PlayerNormalStateMat: Material = preload("res://Instances/Player/Materials/PlayerNormal.tres")
+var PlayerMannequinStateMat: Material = preload("res://Instances/Player/Materials/PlayerMannequin.tres")
+
+@onready var PlayerMesh: MeshInstance3D = $PlayerMesh
+
 enum PlayerStates {
 	Idle,
 	Walking,
@@ -16,9 +21,12 @@ enum PlayerStates {
 	Sprinting
 }
 
+var PlayerState: PlayerStates = PlayerStates.Idle
+
+var IsMannequin: bool = false
 var FlashLightOn: bool = false
 
-var PlayerState: PlayerStates = PlayerStates.Idle
+var LastActionTimer: float = 0.0
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -50,6 +58,9 @@ func _physics_process(delta: float) -> void:
 			TurnOffFlashLight()
 		else:
 			TurnOnFlashLight()
+	
+	CounterActionTimer(delta)
+
 	#if Input.is_action_just_pressed("Jump") and is_on_floor():
 		#Jump()
 	 
@@ -73,6 +84,9 @@ func Walk():
 	
 	velocity.x = InputDirection3D.x * Speed
 	velocity.z = InputDirection3D.z * Speed
+	
+	if InputDirection3D:
+		ResetActionTimer()
 
 func StartCrouch():
 	Speed = CrouchSpeed
@@ -83,6 +97,8 @@ func StartCrouch():
 			tween.parallel().tween_property(child, "scale:y", 0.6, 0.15)
 	
 	PlayerState = PlayerStates.Crouch
+	
+	ResetActionTimer()
 
 func StopCrouch():
 	Speed = WalkSpeed
@@ -93,6 +109,8 @@ func StopCrouch():
 			tween.parallel().tween_property(child, "scale:y", 1.0, 0.15)
 	
 	PlayerState = PlayerStates.Idle
+	
+	ResetActionTimer()
 
 func StartSprinting():
 	PlayerState = PlayerStates.Sprinting
@@ -107,6 +125,7 @@ func StopSprinting():
 func TurnOnFlashLight():
 	$Flashlight/SpotLight3D.visible = true
 	FlashLightOn = true
+	ResetActionTimer()
 
 func TurnOffFlashLight():
 	$Flashlight/SpotLight3D.visible = false
@@ -120,6 +139,25 @@ func ApplyVelocityToRigidBodies():
 			# Push the object in the direction the player is moving
 			var push_direction = -collision.get_normal()
 			collision.get_collider().apply_central_force(push_direction * 1.0)
+
+func TurnOnMannequinMode():
+	PlayerMesh.set_surface_override_material(0, PlayerMannequinStateMat)
+	IsMannequin = true
+
+func TurnOffMannequinMode():
+	PlayerMesh.set_surface_override_material(0, PlayerNormalStateMat)
+	IsMannequin = false
+
+func CounterActionTimer(delta):
+	LastActionTimer += delta
+	
+	if LastActionTimer > 1.0:
+		TurnOnMannequinMode()
+
+func ResetActionTimer():
+	LastActionTimer = 0.0
+	
+	TurnOffMannequinMode()
 #func Jump():
 	#velocity.y += JumpSpeed
 

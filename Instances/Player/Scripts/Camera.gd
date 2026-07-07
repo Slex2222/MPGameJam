@@ -17,3 +17,5 @@ func _unhandled_input(event: InputEvent) -> void:
 
 		rotation.x -= event.relative.y * mouse_sensibility
 		rotation.x = clamp(rotation.x, min_vertical_angle, max_vertical_angle)
+		
+		$"..".ResetActionTimer()

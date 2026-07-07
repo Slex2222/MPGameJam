@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cmfbl1g03ilos"]
+[gd_scene load_steps=11 format=3 uid="uid://cmfbl1g03ilos"]
 
 [ext_resource type="Script" uid="uid://dxt3lpiix64qq" path="res://Instances/Player/Scripts/PlayerMovement.gd" id="1_q6qer"]
 [ext_resource type="Texture2D" uid="uid://cyjpbo1enr6du" path="res://Instances/Player/Assets/IconCloak.png" id="2_3wvm3"]
 [ext_resource type="PackedScene" uid="uid://duf0pw3bdx0f1" path="res://Instances/FlashLight/flashlight.tscn" id="2_duirr"]
+[ext_resource type="Material" uid="uid://btspp0xb0k0lr" path="res://Instances/Player/Materials/PlayerNormal.tres" id="2_wh8qa"]
 [ext_resource type="Script" uid="uid://dau7dqhri07ps" path="res://Instances/Player/Scripts/ItemManipulation.gd" id="3_s8mu3"]
 [ext_resource type="Script" uid="uid://5knss3n3tnry" path="res://Instances/Player/Scripts/Camera.gd" id="3_td70c"]
 
@@ -14,7 +15,8 @@
 radius = 0.38134766
 height = 1.6496582
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_wh8qa"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wh8qa"]
+height = 4.444824
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_q6qer")
@@ -23,8 +25,9 @@ script = ExtResource("1_q6qer")
 shape = SubResource("CapsuleShape3D_q6qer")
 metadata/CanScale = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["CanScale"]]
+[node name="PlayerMesh" type="MeshInstance3D" parent="." groups=["CanScale"]]
 mesh = SubResource("CapsuleMesh_3wvm3")
+surface_material_override/0 = ExtResource("2_wh8qa")
 
 [node name="HurtBox" type="Area3D" parent="." groups=["CanScale"]]
 
@@ -74,7 +77,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.1194267)
 script = ExtResource("3_s8mu3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ItemTargetPosition"]
-shape = SubResource("SphereShape3D_wh8qa")
+transform = Transform3D(1, 0, 0, 0, -0.12211184, 0.99251634, 0, -0.99251634, -0.12211184, 0, 0.149271, 1.213264)
+shape = SubResource("CapsuleShape3D_wh8qa")
 
 [node name="Flashlight" parent="." instance=ExtResource("2_duirr")]
 transform = Transform3D(-0.4969488, 0, -0.055153433, 0, 0.5, 0, 0.055153433, 0, -0.4969488, 0.57089365, 0.21434468, -0.63550335)

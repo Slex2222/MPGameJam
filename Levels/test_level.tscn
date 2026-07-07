@@ -29,7 +29,7 @@ material = SubResource("StandardMaterial3D_gbj0n")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.711452, 3.6004868, 11.069176)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.07913766, 0.9968637, 0, -0.9968637, -0.07913766, 0, 34.2184, -28.831388)
+transform = Transform3D(0.89544, -0.03523068, 0.44378605, -0.44518226, -0.07086302, 0.89263165, 0, -0.9968637, -0.07913766, 0, 34.2184, -28.831388)
 
 [node name="TestObject" parent="." instance=ExtResource("3_4k50d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.796106, 8.969231, -1.0792732)
