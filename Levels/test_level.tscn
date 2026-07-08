@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cmfbl1g03ilos" path="res://Instances/Player/player.tscn" id="1_ormqy"]
 [ext_resource type="PackedScene" uid="uid://cfk5ai5mxgb7y" path="res://Instances/ObjectTest/test_object.tscn" id="3_4k50d"]
 [ext_resource type="PackedScene" uid="uid://6bhej0wxoe37" path="res://Instances/Objects/ATM/atm.tscn" id="4_i4ak4"]
+[ext_resource type="PackedScene" uid="uid://dv5h3qxdc5dop" path="res://Hideout.glb" id="5_3158n"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gbj0n"]
 albedo_color = Color(0.41075924, 0.8559836, 1.92523e-06, 1)
@@ -42,3 +43,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 3.7817826, 8.660513)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1985402956]
 environment = SubResource("Environment_i4ak4")
+
+[node name="Hideout" parent="." unique_id=1270020790 instance=ExtResource("5_3158n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.995577, 2.8025038, 9.958881)

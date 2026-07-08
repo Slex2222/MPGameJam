@@ -2,25 +2,25 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://by837vk767eav"
-path.bptc="res://.godot/imported/Flashlight_Bake.png-d6c15175043a86ce5371457352f7c4bd.bptc.ctex"
+uid="uid://ceyej0gkefcgk"
+path.s3tc="res://.godot/imported/Hideout_Screenshot 2026-06-30 190538.png-23c3300c75ef938e030b9895220f3ab7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "2c7ab85a893283e98c931e9511add182"
+"md5": "da78f40c69bc8891455f23ca07508d68"
 }
 
 [deps]
 
-source_file="res://Flashlight_Bake.png"
-dest_files=["res://.godot/imported/Flashlight_Bake.png-d6c15175043a86ce5371457352f7c4bd.bptc.ctex"]
+source_file="res://Hideout_Screenshot 2026-06-30 190538.png"
+dest_files=["res://.godot/imported/Hideout_Screenshot 2026-06-30 190538.png-23c3300c75ef938e030b9895220f3ab7.s3tc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=true
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
