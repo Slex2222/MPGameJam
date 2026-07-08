@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj4s1aid0npjd"
-path.s3tc="res://.godot/imported/Hideout_Bake.png-9d368f5a2fddbd83460ca11d5d42eab9.s3tc.ctex"
+uid="uid://5xau7vxggrup"
+path.s3tc="res://.godot/imported/Hideout_Bake.png-5a5a53b513d24c8ce00533e770852e08.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Hideout_Bake.png"
-dest_files=["res://.godot/imported/Hideout_Bake.png-9d368f5a2fddbd83460ca11d5d42eab9.s3tc.ctex"]
+source_file="res://Levels/Hideout_Bake.png"
+dest_files=["res://.godot/imported/Hideout_Bake.png-5a5a53b513d24c8ce00533e770852e08.s3tc.ctex"]
 
 [params]
 

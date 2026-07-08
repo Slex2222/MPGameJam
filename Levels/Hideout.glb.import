@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dv5h3qxdc5dop"
-path="res://.godot/imported/Hideout.glb-7a8690c0ef7b4fa29d7e393dc3de0fc2.scn"
+path="res://.godot/imported/Hideout.glb-c9cd7c70d3d04635a2aa2578463cfb61.scn"
 
 [deps]
 
-source_file="res://Hideout.glb"
-dest_files=["res://.godot/imported/Hideout.glb-7a8690c0ef7b4fa29d7e393dc3de0fc2.scn"]
+source_file="res://Levels/Hideout.glb"
+dest_files=["res://.godot/imported/Hideout.glb-c9cd7c70d3d04635a2aa2578463cfb61.scn"]
 
 [params]
 

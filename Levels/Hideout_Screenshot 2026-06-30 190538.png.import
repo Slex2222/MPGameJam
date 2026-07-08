@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ceyej0gkefcgk"
-path.s3tc="res://.godot/imported/Hideout_Screenshot 2026-06-30 190538.png-23c3300c75ef938e030b9895220f3ab7.s3tc.ctex"
+uid="uid://cdobad215wxhl"
+path.s3tc="res://.godot/imported/Hideout_Screenshot 2026-06-30 190538.png-ccf5ff882b90694e62c2cd6d9ac8619e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Hideout_Screenshot 2026-06-30 190538.png"
-dest_files=["res://.godot/imported/Hideout_Screenshot 2026-06-30 190538.png-23c3300c75ef938e030b9895220f3ab7.s3tc.ctex"]
+source_file="res://Levels/Hideout_Screenshot 2026-06-30 190538.png"
+dest_files=["res://.godot/imported/Hideout_Screenshot 2026-06-30 190538.png-ccf5ff882b90694e62c2cd6d9ac8619e.s3tc.ctex"]
 
 [params]
 
