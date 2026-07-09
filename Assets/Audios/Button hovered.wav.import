@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dq3bxsietvba6"
+path="res://.godot/imported/Button hovered.wav-e878add5e4d15578f8cd166ad17a0a2c.sample"
+
+[deps]
+
+source_file="res://Assets/Audios/Button hovered.wav"
+dest_files=["res://.godot/imported/Button hovered.wav-e878add5e4d15578f8cd166ad17a0a2c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
