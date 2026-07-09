@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfk5ai5mxgb7y"]
+[gd_scene format=3 uid="uid://cfk5ai5mxgb7y"]
 
-[ext_resource type="Texture2D" uid="uid://6l1wcijjmenw" path="res://Assets/checkboard.png" id="1_tv5ss"]
+[ext_resource type="Texture2D" uid="uid://6l1wcijjmenw" path="res://Assets/Assets/checkboard.png" id="1_tv5ss"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_d6ssj"]
 

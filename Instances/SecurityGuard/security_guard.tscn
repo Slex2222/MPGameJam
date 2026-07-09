@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4482tpujmtpy"]
+[gd_scene format=3 uid="uid://c4482tpujmtpy"]
 
-[ext_resource type="Script" path="res://Instances/SecurityGuard/Scripts/Movement.gd" id="1_jklwq"]
-[ext_resource type="Texture2D" uid="uid://6l1wcijjmenw" path="res://Assets/checkboard.png" id="2_8wwjh"]
+[ext_resource type="Script" uid="uid://bk4eqyhe4ige6" path="res://Instances/SecurityGuard/Scripts/Movement.gd" id="1_jklwq"]
+[ext_resource type="Texture2D" uid="uid://6l1wcijjmenw" path="res://Assets/Assets/checkboard.png" id="2_8wwjh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v6xxa"]
 

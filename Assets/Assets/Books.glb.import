@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dbhixfj4bm4jd"
-path="res://.godot/imported/Books.glb-61043eebd922195b38ccf7228082de3d.scn"
+path="res://.godot/imported/Books.glb-f877ed14ebcd807f5ef393a77e0e26b0.scn"
 
 [deps]
 
-source_file="res://Assets/Books.glb"
-dest_files=["res://.godot/imported/Books.glb-61043eebd922195b38ccf7228082de3d.scn"]
+source_file="res://Assets/Assets/Books.glb"
+dest_files=["res://.godot/imported/Books.glb-f877ed14ebcd807f5ef393a77e0e26b0.scn"]
 
 [params]
 

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b6y0kd706a4kx"
-path="res://.godot/imported/Flashlight.glb-97252ce00d1e6b6f9d3dc969797bce8c.scn"
+uid="uid://dnhj64j6o8evb"
+path="res://.godot/imported/Picklock.glb-079d554a700677e9aa3f24a0b7480e5f.scn"
 
 [deps]
 
-source_file="res://Assets/Flashlight.glb"
-dest_files=["res://.godot/imported/Flashlight.glb-97252ce00d1e6b6f9d3dc969797bce8c.scn"]
+source_file="res://Assets/Assets/Picklock.glb"
+dest_files=["res://.godot/imported/Picklock.glb-079d554a700677e9aa3f24a0b7480e5f.scn"]
 
 [params]
 
