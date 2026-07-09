@@ -1,10 +1,10 @@
-[gd_scene format=3 uid="uid://cemdhb6n2ans"]
+[gd_scene load_steps=8 format=3 uid="uid://cemdhb6n2ans"]
 
 [ext_resource type="Texture2D" uid="uid://6l1wcijjmenw" path="res://Assets/Assets/checkboard.png" id="1_00vsl"]
 [ext_resource type="PackedScene" uid="uid://cmfbl1g03ilos" path="res://Instances/Player/player.tscn" id="1_ormqy"]
 [ext_resource type="PackedScene" uid="uid://cfk5ai5mxgb7y" path="res://Instances/ObjectTest/test_object.tscn" id="3_4k50d"]
 [ext_resource type="PackedScene" uid="uid://6bhej0wxoe37" path="res://Instances/Objects/ATM/atm.tscn" id="4_i4ak4"]
-[ext_resource type="PackedScene" uid="uid://dv5h3qxdc5dop" path="res://Levels/Hideout.glb" id="5_3158n"]
+[ext_resource type="PackedScene" uid="uid://bkk1s0ixvoej" path="res://Levels/hideout.tscn" id="6_ub4j8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gbj0n"]
 albedo_color = Color(0.41075924, 0.8559836, 1.92523e-06, 1)
@@ -18,31 +18,36 @@ uv1_triplanar_sharpness = 4.141059
 [sub_resource type="Environment" id="Environment_i4ak4"]
 ambient_light_color = Color(0.7058824, 0.7647059, 0.8627451, 1)
 
-[node name="TestLevel" type="Node3D" unique_id=1222281675]
+[node name="TestLevel" type="Node3D"]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=682585788]
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.90964, 2.2610426, -33.01818)
 use_collision = true
 size = Vector3(100, 0.5, 100)
 material = SubResource("StandardMaterial3D_gbj0n")
 
-[node name="Player" parent="." unique_id=1115244160 instance=ExtResource("1_ormqy")]
+[node name="Player" parent="." instance=ExtResource("1_ormqy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.711452, 3.6004868, 11.069176)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=262851031]
-transform = Transform3D(0.89544, -0.03523068, 0.44378605, -0.44518226, -0.07086302, 0.89263165, 0, -0.9968637, -0.07913766, 0, 34.2184, -28.831388)
-
-[node name="TestObject" parent="." unique_id=745838255 instance=ExtResource("3_4k50d")]
+[node name="TestObject" parent="." instance=ExtResource("3_4k50d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.796106, 8.969231, -1.0792732)
 mass = 0.001
 linear_damp_mode = 1
 linear_damp = 3.0
 
-[node name="ATM" parent="." unique_id=1961702090 instance=ExtResource("4_i4ak4")]
+[node name="ATM" parent="." instance=ExtResource("4_i4ak4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 3.7817826, 8.660513)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1985402956]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_i4ak4")
 
-[node name="Hideout" parent="." unique_id=1270020790 instance=ExtResource("5_3158n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.995577, 2.8025038, 9.958881)
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.434394, 5.8213563, 10.523652)
+shadow_enabled = true
+shadow_opacity = 0.32
+distance_fade_enabled = true
+omni_range = 747.137
+omni_attenuation = 0.7
+
+[node name="Hideout" parent="." instance=ExtResource("6_ub4j8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.992542, 2.8953254, 10.927338)

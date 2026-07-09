@@ -84,12 +84,12 @@ shape = SubResource("CapsuleShape3D_wh8qa")
 transform = Transform3D(-0.4969488, 0, -0.055153433, 0, 0.5, 0, 0.055153433, 0, -0.4969488, 0.57089365, 0.21434468, -0.63550335)
 
 [node name="Cam Arm" type="SpringArm3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8574939, 1.2507516, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02437818, 2.2787452, 0)
 spring_length = 4.0
 script = ExtResource("3_td70c")
 
 [node name="Camera3D" type="Camera3D" parent="Cam Arm"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0106624365, 3.2399588)
+transform = Transform3D(1, 0, 0, 0, 0.88698673, 0.46179503, 0, -0.46179503, 0.88698673, -0.004040122, 0.3169223, 3.947211)
 
 [connection signal="body_entered" from="ItemTargetPosition" to="ItemTargetPosition" method="OnItemEntered"]
 [connection signal="body_exited" from="ItemTargetPosition" to="ItemTargetPosition" method="OnItemLeft"]
