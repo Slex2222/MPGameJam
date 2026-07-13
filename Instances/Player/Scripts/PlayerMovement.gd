@@ -1,17 +1,19 @@
 extends CharacterBody3D
 
 @export_group("Character Speed")
-@export var CrouchSpeed: int = 5
-@export var WalkSpeed: int = 10
-@export var RunSpeed: int = 15
+@export var CrouchSpeed: int = 4
+@export var WalkSpeed: int = 8
+@export var RunSpeed: int = 12
 #@export var JumpSpeed: int = 8
 
 var Speed: int = WalkSpeed
 
-var PlayerNormalStateMat: Material = preload("res://Instances/Player/Materials/PlayerNormal.tres")
-var PlayerMannequinStateMat: Material = preload("res://Instances/Player/Materials/PlayerMannequin.tres")
+@onready var Animations: AnimationPlayer = $PlayerMesh/PlayerAnimations/AnimationPlayer
 
-@onready var PlayerMesh: MeshInstance3D = $PlayerMesh
+#var PlayerNormalStateMat: Material = preload("res://Instances/Player/Materials/PlayerNormal.tres")
+#var PlayerMannequinStateMat: Material = preload("res://Instances/Player/Materials/PlayerMannequin.tres")
+
+#@onready var PlayerMesh: MeshInstance3D = $PlayerMesh
 
 enum PlayerStates {
 	Idle,
@@ -59,7 +61,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			TurnOnFlashLight()
 	
-	CounterActionTimer(delta)
+	#CounterActionTimer(delta)
 
 	#if Input.is_action_just_pressed("Jump") and is_on_floor():
 		#Jump()
@@ -85,8 +87,9 @@ func Walk():
 	velocity.x = InputDirection3D.x * Speed
 	velocity.z = InputDirection3D.z * Speed
 	
-	if InputDirection3D:
-		ResetActionTimer()
+	ModifyAnimationSpeed(InputDirection2D)
+	#if InputDirection3D:
+		#ResetActionTimer()
 
 func StartCrouch():
 	Speed = CrouchSpeed
@@ -98,7 +101,7 @@ func StartCrouch():
 	
 	PlayerState = PlayerStates.Crouch
 	
-	ResetActionTimer()
+	#ResetActionTimer()
 
 func StopCrouch():
 	Speed = WalkSpeed
@@ -110,22 +113,26 @@ func StopCrouch():
 	
 	PlayerState = PlayerStates.Idle
 	
-	ResetActionTimer()
+	#ResetActionTimer()
 
 func StartSprinting():
 	PlayerState = PlayerStates.Sprinting
+	
+	Animations.play("run_for_life", 0.2)
 	
 	Speed = RunSpeed
 
 func StopSprinting():
 	PlayerState = PlayerStates.Idle
 	
+	Animations.play("walk", 0.2)
+	
 	Speed = WalkSpeed
 
 func TurnOnFlashLight():
 	$Flashlight/SpotLight3D.visible = true
 	FlashLightOn = true
-	ResetActionTimer()
+	#ResetActionTimer()
 
 func TurnOffFlashLight():
 	$Flashlight/SpotLight3D.visible = false
@@ -140,24 +147,35 @@ func ApplyVelocityToRigidBodies():
 			var push_direction = -collision.get_normal()
 			collision.get_collider().apply_central_force(push_direction * 1.0)
 
-func TurnOnMannequinMode():
-	PlayerMesh.set_surface_override_material(0, PlayerMannequinStateMat)
-	IsMannequin = true
 
-func TurnOffMannequinMode():
-	PlayerMesh.set_surface_override_material(0, PlayerNormalStateMat)
-	IsMannequin = false
+func ModifyAnimationSpeed(InputDirection2D):
+	if InputDirection2D.y > 0:
+		Animations.speed_scale = 1.0
+	elif InputDirection2D.y < 0:
+		Animations.speed_scale = -1.0
+	elif InputDirection2D.x != 0:
+		Animations.speed_scale = 1.0
+	else:
+		Animations.speed_scale = 0.0
 
-func CounterActionTimer(delta):
-	LastActionTimer += delta
-	
-	if LastActionTimer > 1.0:
-		TurnOnMannequinMode()
+#func TurnOnMannequinMode():
+	#PlayerMesh.set_surface_override_material(0, PlayerMannequinStateMat)
+	#IsMannequin = true
+#
+#func TurnOffMannequinMode():
+	#PlayerMesh.set_surface_override_material(0, PlayerNormalStateMat)
+	#IsMannequin = false
 
-func ResetActionTimer():
-	LastActionTimer = 0.0
-	
-	TurnOffMannequinMode()
+#func CounterActionTimer(delta):
+	#LastActionTimer += delta
+	#
+	#if LastActionTimer > 1.0:
+		#TurnOnMannequinMode()
+#
+#func ResetActionTimer():
+	#LastActionTimer = 0.0
+	#
+	#TurnOffMannequinMode()
 #func Jump():
 	#velocity.y += JumpSpeed
 

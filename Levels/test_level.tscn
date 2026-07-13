@@ -27,7 +27,7 @@ size = Vector3(100, 0.5, 100)
 material = SubResource("StandardMaterial3D_gbj0n")
 
 [node name="Player" parent="." instance=ExtResource("1_ormqy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.711452, 3.6004868, 11.069176)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.711452, 3.6004868, -9.441973)
 
 [node name="TestObject" parent="." instance=ExtResource("3_4k50d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.796106, 8.969231, -1.0792732)
@@ -41,7 +41,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 3.7817826, 8.660513)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_i4ak4")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="Hideout" parent="." instance=ExtResource("6_ub4j8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.992542, 2.8953254, 10.927338)
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.434394, 5.8213563, 10.523652)
 shadow_enabled = true
 shadow_opacity = 0.32
@@ -49,5 +54,6 @@ distance_fade_enabled = true
 omni_range = 747.137
 omni_attenuation = 0.7
 
-[node name="Hideout" parent="." instance=ExtResource("6_ub4j8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.992542, 2.8953254, 10.927338)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 0.07208927, 0.9973982, 0, -0.9973982, 0.07208927, 0, 33.092537, -25.423424)
+sky_mode = 1

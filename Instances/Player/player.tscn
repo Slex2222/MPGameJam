@@ -1,15 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmfbl1g03ilos"]
+[gd_scene load_steps=9 format=3 uid="uid://cmfbl1g03ilos"]
 
 [ext_resource type="Script" uid="uid://dxt3lpiix64qq" path="res://Instances/Player/Scripts/PlayerMovement.gd" id="1_q6qer"]
-[ext_resource type="Texture2D" uid="uid://cyjpbo1enr6du" path="res://Instances/Player/Assets/IconCloak.png" id="2_3wvm3"]
 [ext_resource type="PackedScene" uid="uid://duf0pw3bdx0f1" path="res://Instances/FlashLight/flashlight.tscn" id="2_duirr"]
-[ext_resource type="Material" uid="uid://btspp0xb0k0lr" path="res://Instances/Player/Materials/PlayerNormal.tres" id="2_wh8qa"]
 [ext_resource type="Script" uid="uid://dau7dqhri07ps" path="res://Instances/Player/Scripts/ItemManipulation.gd" id="3_s8mu3"]
 [ext_resource type="Script" uid="uid://5knss3n3tnry" path="res://Instances/Player/Scripts/Camera.gd" id="3_td70c"]
+[ext_resource type="PackedScene" uid="uid://dswmmkecluy1h" path="res://Instances/Player/Assets/PlayerScene/player_all_anim.tscn" id="5_s8mu3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q6qer"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_3wvm3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3wvm3"]
 radius = 0.38134766
@@ -25,52 +22,11 @@ script = ExtResource("1_q6qer")
 shape = SubResource("CapsuleShape3D_q6qer")
 metadata/CanScale = false
 
-[node name="PlayerMesh" type="MeshInstance3D" parent="." groups=["CanScale"]]
-mesh = SubResource("CapsuleMesh_3wvm3")
-surface_material_override/0 = ExtResource("2_wh8qa")
-
 [node name="HurtBox" type="Area3D" parent="." groups=["CanScale"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03161621, 0)
 shape = SubResource("CapsuleShape3D_3wvm3")
-
-[node name="SubViewport" type="SubViewport" parent="."]
-transparent_bg = true
-size = Vector2i(1920, 1080)
-render_target_update_mode = 4
-
-[node name="PlayerStateUI" type="Control" parent="SubViewport"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="SubViewport/PlayerStateUI"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.97
-anchor_top = 0.05
-anchor_right = 0.97
-anchor_bottom = 0.05
-offset_left = -88.0
-offset_bottom = 88.0
-grow_horizontal = 0
-
-[node name="TextureRect" type="TextureRect" parent="SubViewport/PlayerStateUI"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.95
-anchor_top = 0.07
-anchor_right = 0.95
-anchor_bottom = 0.07
-offset_left = -64.0
-offset_bottom = 64.0
-grow_horizontal = 0
-texture = ExtResource("2_3wvm3")
-expand_mode = 1
 
 [node name="ItemTargetPosition" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.1194267)
@@ -90,6 +46,11 @@ script = ExtResource("3_td70c")
 
 [node name="Camera3D" type="Camera3D" parent="Cam Arm"]
 transform = Transform3D(1, 0, 0, 0, 0.88698673, 0.46179503, 0, -0.46179503, 0.88698673, -0.004040122, 0.3169223, 3.947211)
+
+[node name="PlayerMesh" type="Node3D" parent="." groups=["CanScale"]]
+
+[node name="PlayerAnimations" parent="PlayerMesh" instance=ExtResource("5_s8mu3")]
+transform = Transform3D(-1.2239188e-08, 0, 0.28, 0, 0.28, 0, -0.28, 0, -1.2239188e-08, 0, -0.9502578, 0)
 
 [connection signal="body_entered" from="ItemTargetPosition" to="ItemTargetPosition" method="OnItemEntered"]
 [connection signal="body_exited" from="ItemTargetPosition" to="ItemTargetPosition" method="OnItemLeft"]
