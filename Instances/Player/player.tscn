@@ -50,7 +50,7 @@ transform = Transform3D(1, 0, 0, 0, 0.88698673, 0.46179503, 0, -0.46179503, 0.88
 [node name="PlayerMesh" type="Node3D" parent="." groups=["CanScale"]]
 
 [node name="PlayerAnimations" parent="PlayerMesh" instance=ExtResource("5_s8mu3")]
-transform = Transform3D(-1.2239188e-08, 0, 0.28, 0, 0.28, 0, -0.28, 0, -1.2239188e-08, 0, -0.9502578, 0)
+transform = Transform3D(-1.2239188e-08, 0, 0.28, 0, 0.28, 0, -0.28, 0, -1.2239188e-08, 0, -0.9, 0)
 
 [connection signal="body_entered" from="ItemTargetPosition" to="ItemTargetPosition" method="OnItemEntered"]
 [connection signal="body_exited" from="ItemTargetPosition" to="ItemTargetPosition" method="OnItemLeft"]

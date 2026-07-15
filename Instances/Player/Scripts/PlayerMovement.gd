@@ -1,9 +1,9 @@
 extends CharacterBody3D
 
 @export_group("Character Speed")
-@export var CrouchSpeed: int = 4
-@export var WalkSpeed: int = 8
-@export var RunSpeed: int = 12
+@export var CrouchSpeed: int = 2
+@export var WalkSpeed: int = 4
+@export var RunSpeed: int = 8
 #@export var JumpSpeed: int = 8
 
 var Speed: int = WalkSpeed
@@ -94,10 +94,12 @@ func Walk():
 func StartCrouch():
 	Speed = CrouchSpeed
 	
-	var tween = create_tween()
-	for child in get_children():
-		if child.is_in_group("CanScale"):
-			tween.parallel().tween_property(child, "scale:y", 0.6, 0.15)
+	
+	Animations.play("croutch", 0.2)
+	#var tween = create_tween()
+	#for child in get_children():
+		#if child.is_in_group("CanScale"):
+			#tween.parallel().tween_property(child, "scale:y", 0.6, 0.15)
 	
 	PlayerState = PlayerStates.Crouch
 	
@@ -106,10 +108,11 @@ func StartCrouch():
 func StopCrouch():
 	Speed = WalkSpeed
 	
-	var tween = create_tween()
-	for child in get_children():
-		if child.is_in_group("CanScale"):
-			tween.parallel().tween_property(child, "scale:y", 1.0, 0.15)
+	Animations.play("walk", 0.2)
+	#var tween = create_tween()
+	#for child in get_children():
+		#if child.is_in_group("CanScale"):
+			#tween.parallel().tween_property(child, "scale:y", 1.0, 0.15)
 	
 	PlayerState = PlayerStates.Idle
 	
@@ -118,7 +121,7 @@ func StopCrouch():
 func StartSprinting():
 	PlayerState = PlayerStates.Sprinting
 	
-	Animations.play("run_for_life", 0.2)
+	Animations.play("light_run", 0.2)
 	
 	Speed = RunSpeed
 
@@ -150,9 +153,9 @@ func ApplyVelocityToRigidBodies():
 
 func ModifyAnimationSpeed(InputDirection2D):
 	if InputDirection2D.y > 0:
-		Animations.speed_scale = 1.0
-	elif InputDirection2D.y < 0:
 		Animations.speed_scale = -1.0
+	elif InputDirection2D.y < 0:
+		Animations.speed_scale = 1.0
 	elif InputDirection2D.x != 0:
 		Animations.speed_scale = 1.0
 	else:

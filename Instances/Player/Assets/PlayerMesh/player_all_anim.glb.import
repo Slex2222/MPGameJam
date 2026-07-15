@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cdb28ksorebm"
+uid="uid://dnuu264eygk6o"
 path="res://.godot/imported/player_all_anim.glb-89c6c1524ca1aaa93c479b4166e0d8c7.scn"
 
 [deps]
@@ -39,7 +39,7 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "animations": {
-"light_run": {
+"croutch": {
 "save_to_file/enabled": false,
 "save_to_file/fallback_path": "",
 "save_to_file/keep_custom_tracks": "",
@@ -2095,7 +2095,7 @@ _subresources={
 "slice_99/start_frame": 0,
 "slices/amount": 0
 },
-"run_for_life": {
+"light_run": {
 "save_to_file/enabled": false,
 "save_to_file/fallback_path": "",
 "save_to_file/keep_custom_tracks": "",

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c4482tpujmtpy"]
+[gd_scene load_steps=8 format=3 uid="uid://c4482tpujmtpy"]
 
 [ext_resource type="Script" uid="uid://bk4eqyhe4ige6" path="res://Instances/SecurityGuard/Scripts/Movement.gd" id="1_jklwq"]
 [ext_resource type="Texture2D" uid="uid://6l1wcijjmenw" path="res://Assets/Assets/checkboard.png" id="2_8wwjh"]
@@ -15,6 +15,9 @@ uv1_triplanar_sharpness = 3.9999993
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8wwjh"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8wwjh"]
+radius = 2.3676758
+
 [node name="SecurityGuard" type="CharacterBody3D"]
 script = ExtResource("1_jklwq")
 
@@ -30,3 +33,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_w3n7q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
 shape = SubResource("CapsuleShape3D_8wwjh")
+
+[node name="DetectionHitbox" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionHitbox"]
+shape = SubResource("CylinderShape3D_8wwjh")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dswmmkecluy1h"]
 
-[ext_resource type="PackedScene" uid="uid://cdb28ksorebm" path="res://Instances/Player/Assets/PlayerMesh/player_all_anim.glb" id="1_h5dpf"]
+[ext_resource type="PackedScene" uid="uid://dnuu264eygk6o" path="res://Instances/Player/Assets/PlayerMesh/player_all_anim.glb" id="1_h5dpf"]
 
 [node name="player_all_anim" instance=ExtResource("1_h5dpf")]
 
